@@ -19,6 +19,7 @@ public class Main {
         Z1Generator z1Generator = Z1Generator.getInstance();
         Z2Generator z2Generator = Z2Generator.getInstance();
         Z3Generator z3Generator = Z3Generator.getInstance();
+        SummaryGenerator summary = SummaryGenerator.getInstance();
 
         ArrayList<String[]> deliveryTimes;
         ArrayList<String[]> distanceMatrix;
@@ -49,16 +50,7 @@ public class Main {
 
             long timeProgElapsed = (System.nanoTime() - startProgram)/1000000; // millisecond
 
-            System.out.println("Objective: " + objective.get(0));
-            System.out.println("Z1: " + objective.get(1));
-            System.out.println("Z2: " + objective.get(2));
-            System.out.println("Z3: " + objective.get(3));
-            System.out.println("W: " + objective.get(4));
-
-            System.out.println("Algorithm time: " + timeAlgElapsed);
-            System.out.println("Program time: " + timeProgElapsed);
-
-            System.out.println("\n");
+            summary.generateSummary(objective, i, timeAlgElapsed);
 
             clear(graph, deliveryTimes, distanceMatrix, sortedDelivery, moovers, objective);
             greedyAlgorithm.clear();
